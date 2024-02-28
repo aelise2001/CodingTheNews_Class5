@@ -30,8 +30,13 @@
                 width: 100px;
             }
 
+            .purple_background {
+                background-color: purple;
+            }
+
             .toggle_divs {
-                background-color: gray;
+                border: 3px solid black;
+                box-sizing: border-box;
                 height: 100px;
                 width: 100px;
             }
@@ -39,6 +44,8 @@
             div > p {
                 padding: 0 5px;
             }
+
+            
 
         </style>
     </head>
@@ -79,7 +86,6 @@
             let paragraph_tag = document.getElementById('blank_text');
             let button = document.getElementById('button');
             let hover_div = document.getElementById('hover_div');
-            let divs = document.getElementsByClassName('toggle_divs');
             
 
 
@@ -105,7 +111,7 @@
             // for the red box, hover and change color to purple
 
 
-            hover_div.onmouseover = function() {
+            hover_div.onmouseenter = function() {
                 hover_div.style.backgroundColor = 'purple';
             };
 
@@ -156,11 +162,13 @@
             // hover events on all the divs
 
 
-                // selects all the divs with toggle_divs class (does not include the red one)
+                // selects all the divs with toggle_divs class (does not incldue the red one)
 
 
             
             // Write this beforehand, but delete it after because we restate it with the text color change below
+
+            let divs = document.getElementsByClassName('toggle_divs');
 
             /*
 
@@ -172,13 +180,13 @@
 
                 divs[i].addEventListener('mouseover',function(){
                     //hover over, make the div purple
-                    divs[i].style.backgroundColor = 'purple';
+                    divs[i].classList.add('purple_background');
 
                 });   
                 divs[i].addEventListener('mouseleave',function(){
 
-                    // when it leaves, reset to gray
-                    divs[i].style.backgroundColor = 'gray';
+                    // when it leaves, remove purple background
+                    divs[i].classList.remove('purple_background');
                 });   
             }
 
@@ -192,18 +200,18 @@
                 // select the .text element inside each div
                 let text = divs[i].querySelector('.text');
 
-                divs[i].addEventListener('mouseover',function(){
+                divs[i].addEventListener('mouseenter',function(){
 
                     //hover over, make the div purple
-                    divs[i].style.backgroundColor = 'purple';
+                    divs[i].classList.add('purple_background');
 
                     // makes the words inside .text element white
                     text.style.color = 'white';
                 });   
                 divs[i].addEventListener('mouseleave',function(){
 
-                    // when it leaves, reset to gray
-                    divs[i].style.backgroundColor = 'gray';
+                    // when it leaves, remove purple background
+                    divs[i].classList.remove('purple_background');
 
                     // makes the words inside .text element turb back to black
                     text.style.color = 'black';
