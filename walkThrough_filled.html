@@ -79,7 +79,7 @@
             let paragraph_tag = document.getElementById('blank_text');
             let button = document.getElementById('button');
             let hover_div = document.getElementById('hover_div');
-            let divs = document.getElementsByClassName('toggle_divs');
+            
 
 
 
@@ -157,49 +157,61 @@
 
                 // selects all the divs with toggle_divs class (does not incldue the red one)
 
-            /* 
+
             
             // Write this beforehand, but delete it after because we restate it with the text color change below
 
-            Array.from(divs).forEach(function(element){
+            let divs = document.getElementsByClassName('toggle_divs');
 
-                // going through each div element
-                
-                element.addEventListener('mouseover',function(){
-                    // when you hover over the div, you get purple
-                    element.style.backgroundColor = 'purple';
-                });
+            /*
 
-                element.addEventListener('mouseleave',function(){
-                    // when you hover out the div, you get gray
-                    element.style.backgroundColor = 'gray';
-                });
-            });
+            for (let i = 0; i < divs.length; i++) {
+
+                //goes through each div element
+
+                let text = divs[i].querySelector('.text');
+
+                divs[i].addEventListener('mouseover',function(){
+                    //hover over, make the div purple
+                    divs[i].style.backgroundColor = 'purple';
+
+                });   
+                divs[i].addEventListener('mouseleave',function(){
+
+                    // when it leaves, reset to gray
+                    divs[i].style.backgroundColor = 'gray';
+                });   
+            }
 
             */
 
+
             // change the text color inside the div
 
-            Array.from(divs).forEach(function(element){
+            for (let i = 0; i < divs.length; i++) {
 
                 // select the .text element inside each div
+                let text = divs[i].querySelector('.text');
 
-                let text = element.querySelector('.text');
+                divs[i].addEventListener('mouseover',function(){
 
-                element.addEventListener('mouseover',function(){
-                    element.style.backgroundColor = 'purple';
+                    //hover over, make the div purple
+                    divs[i].style.backgroundColor = 'purple';
 
                     // makes the words inside .text element white
                     text.style.color = 'white';
-                });
+                });   
+                divs[i].addEventListener('mouseleave',function(){
 
-                element.addEventListener('mouseleave',function(){
-                    element.style.backgroundColor = 'gray';
+                    // when it leaves, reset to gray
+                    divs[i].style.backgroundColor = 'gray';
 
                     // makes the words inside .text element turb back to black
                     text.style.color = 'black';
-                });
-            });
+                });   
+            }
+
+
 
 
         </script>
